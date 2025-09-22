@@ -190,4 +190,7 @@ def generate_search_prompt(topic: str, num_papers: int = 5) -> str:
 
 if __name__ == "__main__":
     # Initialize and run the server
-    mcp.run(transport='sse')
+    # mcp.run(transport='sse')
+
+    port = int(os.environ.get("PORT", 8000))  # Render provides PORT env var
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=port)
